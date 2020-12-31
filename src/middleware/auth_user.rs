@@ -17,7 +17,7 @@ pub struct AuthUser {
 
 impl AuthUser {
     pub async fn from_header(headers: &HeaderMap) -> Option<Self> {
-        if let Some(header) = headers.get("api_secret") {
+        if let Some(header) = headers.get("api-secret") {
             let token = header.to_str().unwrap().to_string();
 
             /// get from local cache first
