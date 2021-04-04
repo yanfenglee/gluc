@@ -1,7 +1,5 @@
 use actix_http::Response;
 use actix_web::HttpResponse;
-use chrono::NaiveDateTime;
-use rbatis::crud::CRUDEnable;
 use rbatis::core::Error;
 use serde::{Deserialize, Serialize};
 use serde::de::DeserializeOwned;
@@ -65,16 +63,15 @@ impl<T> RespVO<T> where T: Serialize + DeserializeOwned + Clone {
     }
 
     pub fn resp_wrap(&self) -> Response {
-        return HttpResponse::Ok().content_type("json").body(self.to_string());
+        return HttpResponse::Ok().json(self);
     }
 
     pub fn resp(&self) -> Response {
         match self.data.as_ref() {
             Some(data) => {
-                let data = serde_json::to_string(data).unwrap();
-                HttpResponse::Ok().content_type("json").body(data)
+                HttpResponse::Ok().json(data)
             },
-            None => HttpResponse::Ok().content_type("json").body("[]")
+            None => HttpResponse::Ok().json("[]")
         }
     }
 

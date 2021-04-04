@@ -93,7 +93,7 @@ pub struct DeviceStatusDTO {
 impl From<&DeviceStatusDTO> for DeviceStatus {
     fn from(dto: &DeviceStatusDTO) -> Self {
         DeviceStatus {
-            id: Some(rbatis::plugin::snowflake::block_snowflake_id()),
+            id: Some(rbatis::plugin::snowflake::new_snowflake_id()),
             user_id: None,
             device: dto.device.clone(),
             battery: dto.uploader.battery,

@@ -29,7 +29,7 @@ impl AuthUser {
 
             /// get from db
             #[py_sql(RB, "SELECT id FROM user WHERE token = #{token} LIMIT 1")]
-            fn select_id(token: &String) -> Option<i64> {}
+            async fn select_id(token: &String) -> Option<i64> {}
 
             if let Ok(Some(id)) = select_id(&token).await {
 
