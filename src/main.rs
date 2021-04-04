@@ -32,6 +32,7 @@ async fn main() -> std::io::Result<()> {
 
     HttpServer::new(|| {
         App::new()
+            .app_data(web::JsonConfig::default().limit(1024*1024*8))
             .route("/", web::get().to(index))
             .configure(cgm_controller::config)
             .default_service(web::route().to(default_proc)
