@@ -1,4 +1,3 @@
-use rbatis::plugin::logic_delete::RbatisLogicDeletePlugin;
 use rbatis::rbatis::Rbatis;
 
 pub mod mapper;
@@ -6,7 +5,7 @@ pub mod mapper;
 // 示例-Rbatis示例初始化(必须)
 lazy_static! {
   pub static ref RB:Rbatis={
-     let mut rbatis = Rbatis::new();
+     let rbatis = Rbatis::new();
      return rbatis;
   };
 }

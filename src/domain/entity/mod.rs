@@ -1,9 +1,9 @@
 
 use chrono::NaiveDateTime;
-use rbatis::crud::CRUD;
+use rbatis::crud_table;
 use serde::{Deserialize, Serialize};
 
-#[crud_enable]
+#[crud_table]
 #[derive(Serialize, Deserialize, Clone, Debug)]
 pub struct Cgm {
     pub id: Option<i64>,
@@ -27,7 +27,7 @@ pub struct Cgm {
     pub mbg: Option<f64>,
 }
 
-#[crud_enable]
+#[crud_table]
 #[derive(Serialize, Deserialize, Clone, Debug)]
 pub struct DeviceStatus {
     pub id: Option<i64>,

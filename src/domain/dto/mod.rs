@@ -1,9 +1,11 @@
+
 use serde::{Deserialize, Serialize};
 use chrono::NaiveDateTime;
 use crate::domain::entity::{Cgm, DeviceStatus};
 use rbatis::core::value::DateTimeNow;
 
 /// blood glucose dto
+#[allow(non_snake_case)]
 #[derive(Serialize, Deserialize, Clone, Debug)]
 pub struct BgDTO {
     pub id: Option<i64>,

@@ -1,9 +1,8 @@
 use actix_web::{Responder, web, get, post};
-use chrono::NaiveDateTime;
-use rbatis::core::value::DateTimeNow;
+//use chrono::NaiveDateTime;
+//use rbatis::core::value::DateTimeNow;
 use serde::Deserialize;
 
-use crate::domain::entity::{Cgm};
 use crate::domain::vo::RespVO;
 use crate::service::CGM_SERVICE;
 use crate::domain::dto::BgDTO;

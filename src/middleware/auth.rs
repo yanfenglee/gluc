@@ -2,7 +2,7 @@ use std::pin::Pin;
 use std::task::{Context, Poll};
 
 use actix_web::{dev::ServiceRequest, dev::ServiceResponse, Error};
-use futures::future::{ok, Ready, err};
+use futures::future::{ok, Ready};
 use futures::Future;
 use actix_web::dev::{Transform, Service};
 use actix_http::error;

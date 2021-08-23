@@ -2,7 +2,7 @@ use std::{sync::Mutex, collections::HashMap};
 use once_cell::sync::Lazy;
 
 pub static CACHE_I64: Lazy<Mutex<HashMap<String, i64>>> = Lazy::new(|| {
-    let mut m = HashMap::new();
+    let m = HashMap::new();
     Mutex::new(m)
 });
 

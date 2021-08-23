@@ -1,13 +1,8 @@
-use actix_web::{App, HttpRequest, HttpResponse, HttpServer, Responder, web, ResponseError, HttpMessage, Either};
+use actix_web::{App, HttpRequest, HttpResponse, HttpServer, Responder, web};
 
 use gluc::config::{log_config, CONFIG};
 use gluc::controller::{cgm_controller};
 use gluc::dao::RB;
-use actix_http::http::Method;
-use actix_web::dev::{Service, ServiceResponse};
-use futures::FutureExt;
-use actix_http::{Error, Response};
-use gluc::middleware::auth;
 
 async fn index() -> impl Responder {
     HttpResponse::Ok().body("Hello cgm")
