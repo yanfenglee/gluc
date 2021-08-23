@@ -25,7 +25,7 @@ impl CgmService {
 
     pub async fn list(&self, ts: i64, cnt: i64, user_id: i64) -> Result<Vec<BgDTO>> {
 
-        #[sql(RB, "SELECT * FROM cgm WHERE user_id = #{user_id} and `date` < #{ts} order by `date` desc LIMIT #{cc}")]
+        #[sql(RB, "SELECT * FROM cgm WHERE user_id = ? and `date` < ? order by `date` desc LIMIT ?")]
         async fn select_entries(user_id: i64, ts: i64, cc: i64) -> Vec<Cgm> {}
 
         let cgms = select_entries(user_id, ts, cnt).await?;

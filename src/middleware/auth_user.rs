@@ -3,6 +3,7 @@ use actix_http::{Payload, Error};
 use actix_http::error::ParseError;
 use actix_http::http::HeaderMap;
 use rbatis::sql;
+use rbatis::rbatis::Rbatis;
 use std::pin::Pin;
 use futures::{Future};
 
@@ -28,10 +29,10 @@ impl AuthUser {
             }
 
             // get from db
-            #[sql(RB, "SELECT id FROM user WHERE token = #{token} LIMIT 1")]
-            async fn select_id(token: &String) -> Option<i64> {}
+            #[sql(rb, "SELECT id FROM user WHERE token = ? LIMIT 1")]
+            async fn select_id(rb: &Rbatis, token: &String) -> Option<i64> {}
 
-            if let Ok(Some(id)) = select_id(&token).await {
+            if let Ok(Some(id)) = select_id(&RB, &token).await {
 
                 // write cache
                 if let Ok(mut cc) = CACHE_I64.lock() {
